@@ -1,11 +1,11 @@
 # plugin.service.snapcast - a Kodi addon running Snapcast
 Run Snapcast as a Kodi addon. 
 
-So far it's maily compiling it for Libreelec on the RPi3.
+So far it's mainly compiling it for Libreelec on the RPi3.
 
 **Building**
 
-I've built obn Libreelec 8.1.2:
+I've built on Libreelec 8.1.2:
 
 * Clone the Libreelec 8.1.2 source from https://github.com/LibreELEC/LibreELEC.tv
 * Clone https://github.com/frafall/plugin.service.snapcast and move the directories into LibreELEC.tv
