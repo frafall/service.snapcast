@@ -1,5 +1,5 @@
-# plugin.service.snapcast - a Kodi addon running Snapcast
-Run Snapcast as a Kodi addon. 
+# plugin.service.snapcast
+Run Snapcast (client) as a Kodi addon/service. 
 
 So far it's mainly compiling it for Libreelec on the RPi3.
 
@@ -9,11 +9,28 @@ I've built on Libreelec 8.1.2:
 
 * Clone the Libreelec 8.1.2 source from https://github.com/LibreELEC/LibreELEC.tv
 * Clone https://github.com/frafall/plugin.service.snapcast and move the directories into LibreELEC.tv
-* Build by 'scripts/build snapcast'
+* Build by 'scripts/create_addon snapcast'
 
-**TODO**
+**Goal**
 
-* Do the addon stuff to keep snapcast client running as a service
-* For now I aim to use it on my digi+ interface, would be nice to use the Kodi HDMI audio
-* Server integration is a whole different ballgame..but binary is compiled 
-* The externals (git submodules) are hardcoded, improve..
+  To use Snapcast as the audio transport mechanism for my multiroom
+  audio, check out https://musingsofafragilemind.wordpress.com/
+
+**TODO (not nessesary in order)**
+
+  1. To be able to compile snapclient/snapserver for Libreelec
+  2. Wrap snapclient in a Kodi service addon 
+  3. Alsa configuration from Kodi
+  4. Audio integration with Kodi (somehow?), using Digi+ for now
+  5. Snapserver service?
+  6. Any snapserver audio integration for Kodi audio output?
+
+These may change (and probably will) 
+
+**Notes**
+
+* The externals (git submodules) are hardcoded, can we get tag 
+  and use the Libreelec download mechanisms? 
+
+Thanks to Anton Voyl (awiouy) for the wrapping of Librespot
+whucg I've used to learn about service addons.

@@ -1,0 +1,12 @@
+[Unit]
+Description=Snapcast server
+After=kodi.service network-online.target sound.target
+Requires=kodi.service network-online.target sound.target
+
+[Service]
+EnvironmentFile=/storage/.kodi/addons/service.snapcast/bin/snapcast.env
+ExecStart=/bin/sh /storage/.kodi/addons/service.snapcast/bin/snapserver.start
+Restart=on-failure
+
+[Install]
+WantedBy=kodi.target

@@ -35,19 +35,27 @@ PKG_SITE="https://github.com/badaix/snapcast"
 PKG_URL="$PKG_SITE/archive/v$PKG_VERSION.tar.gz"
 PKG_SOURCE_DIR="$PKG_NAME-$PKG_VERSION-Source"
 PKG_DEPENDS_TARGET="toolchain tremor flac libvorbis libogg"
-PKG_SECTION="service.multimedia"
+PKG_SECTION="service"
 PKG_SHORTDESC="Snapcast: Synchronous audio player."
 PKG_LONGDESC="Snapcast is a multi-room client-server audio player, where all clients are time synchronized with the server to play perfectly synced audio. It's not a standalone player, but an extension that turns your existing audio player into a Sonos-like multi-room solution."
 
 PKG_IS_ADDON="yes"
-PKG_ADDON_NAME="Synchronous audio player.(Snapcast)"
+PKG_ADDON_NAME="Snapcast"
 PKG_ADDON_TYPE="xbmc.service"
+PKG_MAINTAINER="frafall"
 
 make_target() {
   env TARGET=LIBREELEC make 
 }
 
+makeinstall_target() {
+  :
+}
+
 # Should get the tags from git i guess
+# git submodule status externals/aixlog
+# f0b88927f146c1726835528711601deb87bf115b externals/aixlog (remotes/origin/develop-35-gf0b8892)
+
 post_patch() {
   (
     cd $BUILD/$PKG_NAME-$PKG_VERSION/externals
@@ -65,3 +73,11 @@ post_patch() {
     (git clone https://github.com/badaix/jsonrpcpp.git -q; cd jsonrpcpp; git checkout 115296b -q)
   )
 }
+
+
+addon() {
+  mkdir -p "$ADDON_BUILD/$PKG_ADDON_ID/bin"
+  cp "$PKG_BUILD/client/snapclient" "$ADDON_BUILD/$PKG_ADDON_ID/bin"
+  cp "$PKG_BUILD/server/snapserver" "$ADDON_BUILD/$PKG_ADDON_ID/bin"
+}
+
