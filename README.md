@@ -3,6 +3,13 @@ Run Snapcast (client) as a Kodi addon/service.
 
 So far it's mainly compiling it for Libreelec on the RPi3.
 
+**Goal**
+To use Snapcast as the audio transport mechanism for my multiroom
+audio, check out https://musingsofafragilemind.wordpress.com/
+
+- Playing music from snapserver->net->snapclient-> digi+ or kodi-hdmi or both (config)
+- Kodi local playing overrides (silences) snapclient if playing on hdmi
+
 **Building**
 
 I've built on Libreelec 8.1.2:
@@ -10,11 +17,6 @@ I've built on Libreelec 8.1.2:
 * Clone the Libreelec 8.1.2 source from https://github.com/LibreELEC/LibreELEC.tv
 * Clone https://github.com/frafall/plugin.service.snapcast and move the directories into LibreELEC.tv
 * Build by 'scripts/create_addon snapcast'
-
-**Goal**
-
-  To use Snapcast as the audio transport mechanism for my multiroom
-  audio, check out https://musingsofafragilemind.wordpress.com/
 
 **TODO (not nessesary in order)**
 
