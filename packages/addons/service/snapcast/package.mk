@@ -28,15 +28,16 @@
 end_long_comment
 
 PKG_NAME="snapcast"
-PKG_VERSION="0.12.0"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
+PKG_VERSION="0.12.0"
 PKG_SITE="https://github.com/badaix/snapcast"
 PKG_URL="$PKG_SITE/archive/v$PKG_VERSION.tar.gz"
 PKG_SOURCE_DIR="$PKG_NAME-$PKG_VERSION-Source"
 PKG_DEPENDS_TARGET="toolchain tremor flac libvorbis libogg"
 PKG_SECTION="service"
-PKG_SHORTDESC="Snapcast: Synchronous audio player."
+PKG_SHORTDESC="Snapcast - Synchronous audio player."
 PKG_LONGDESC="Snapcast is a multi-room client-server audio player, where all clients are time synchronized with the server to play perfectly synced audio. It's not a standalone player, but an extension that turns your existing audio player into a Sonos-like multi-room solution."
 
 PKG_IS_ADDON="yes"
@@ -55,8 +56,10 @@ makeinstall_target() {
 # Should get the tags from git i guess
 # git submodule status externals/aixlog
 # f0b88927f146c1726835528711601deb87bf115b externals/aixlog (remotes/origin/develop-35-gf0b8892)
+# wget "https://api.github.com/repos/badaix/aixlog/tarball/f0b8892"
+# $SCRIPTS/get ...?
 
-post_patch() {
+post_unpack() {
   (
     cd $BUILD/$PKG_NAME-$PKG_VERSION/externals
 
@@ -79,5 +82,17 @@ addon() {
   mkdir -p "$ADDON_BUILD/$PKG_ADDON_ID/bin"
   cp "$PKG_BUILD/client/snapclient" "$ADDON_BUILD/$PKG_ADDON_ID/bin"
   cp "$PKG_BUILD/server/snapserver" "$ADDON_BUILD/$PKG_ADDON_ID/bin"
+
+  #
+  # Simplify debugging by hardcoding these (for now), do diff later
+  #
+
+  #mkdir -p "$ADDON_BUILD/$PKG_ADDON_ID/default"
+  #cp "$PKG_BUILD/client/debian/snapclient.default" "$ADDON_BUILD/$PKG_ADDON_ID/default/snapclient"
+  #cp "$PKG_BUILD/server/debian/snapserver.default" "$ADDON_BUILD/$PKG_ADDON_ID/default/snapserver"
+
+  #mkdir -p "$ADDON_BUILD/$PKG_ADDON_ID/system.d"
+  #cp "$PKG_BUILD/client/debian/snapclient.service" "$ADDON_BUILD/$PKG_ADDON_ID/system.d/service.snapcast.service"
+  #cp "$PKG_BUILD/server/debian/snapserver.service" "$ADDON_BUILD/$PKG_ADDON_ID/system.d/service.snapserver.service"
 }
 

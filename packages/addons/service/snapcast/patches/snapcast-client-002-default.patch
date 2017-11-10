@@ -1,0 +1,17 @@
+*** snapcast-0.12.0/client/debian/snapclient.default.org	Sun Oct 29 08:04:16 2017
+--- snapcast-0.12.0/client/debian/snapclient.default	Sun Oct 29 08:04:27 2017
+***************
+*** 15,20 ****
+  #   --latency arg (=0)              latency of the soundcard
+  #   -i, --instance arg (=1)         instance id
+  
+! USER_OPTS="--user snapclient:audio"
+  
+  SNAPCLIENT_OPTS=""
+--- 15,20 ----
+  #   --latency arg (=0)              latency of the soundcard
+  #   -i, --instance arg (=1)         instance id
+  
+! USER_OPTS=""
+  
+  SNAPCLIENT_OPTS=""

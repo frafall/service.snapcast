@@ -1,0 +1,25 @@
+*** snapcast-0.12.0/server/debian/snapserver.service.org	Sun Oct 29 07:23:43 2017
+--- snapcast-0.12.0/server/debian/snapserver.service	Sun Oct 29 07:25:56 2017
+***************
+*** 4,13 ****
+  Requires=network-online.target
+  
+  [Service]
+! EnvironmentFile=-/etc/default/snapserver
+  Type=forking
+! ExecStart=/usr/bin/snapserver -d $USER_OPTS $SNAPSERVER_OPTS
+  PIDFile=/var/run/snapserver/pid
+  Restart=always
+  
+  [Install]
+--- 4,13 ----
+  Requires=network-online.target
+  
+  [Service]
+! EnvironmentFile=-/storage/.kodi/addons/service.snapcast/default/snapserver
+  Type=forking
+! ExecStart=/storage/.kodi/addons/service.snapcast/bin/snapserver -d $USER_OPTS $SNAPSERVER_OPTS
+  PIDFile=/var/run/snapserver/pid
+  Restart=always
+  
+  [Install]

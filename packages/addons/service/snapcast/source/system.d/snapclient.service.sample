@@ -1,0 +1,21 @@
+#
+# Sample to start instance #2 of snapclient, assuming for additional ALSA
+# audio interfaces.
+#
+# We need to set -i <n> and -n <alsa index> for each instance in addition
+# to the deafault interface and match it to the pid file
+#
+[Unit]
+Description=Snapcast client
+After=network-online.target sound.target
+Requires=network-online.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/storage/.kodi/addons/service.snapcast/default/snapclient
+ExecStart=/storage/.kodi/addons/service.snapcast/bin/snapclient -i 2 -d $USER_OPTS $SNAPCLIENT_OPTS2 
+PIDFile=/var/run/snapclient/pid.2
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

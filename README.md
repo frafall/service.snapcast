@@ -1,38 +1,66 @@
 # plugin.service.snapcast
 Run Snapcast (client) as a Kodi addon/service. 
 
-So far it's mainly compiling it for Libreelec on the RPi3.
+Snapcast 
+========
+Snapcast (https://github.com/badaix/snapcast) is a multi-room audio player.
+This addon implementation installes the snapclient, ie the 'speaker' part,
+as a Kodi service addon.
 
-**Goal**
-To use Snapcast as the audio transport mechanism for my multiroom
-audio, check out https://musingsofafragilemind.wordpress.com/
+The addon will keep the snapclient running while Kodi is up but, as someone
+uses Kodi to play anything the snapclient will be disabled.
 
-- Playing music from snapserver->net->snapclient-> digi+ or kodi-hdmi or both (config)
-- Kodi local playing overrides (silences) snapclient if playing on hdmi
+Audio setup
+-----------
+The addon only instanciates snapclient running on the default alsa
+interface. For this to work you will probably need to make the hdmi
+interface visible in alsa.
 
-**Building**
+1. To do this you need to edit config.txt:
 
-I've built on Libreelec 8.1.2:
+   # mount -o remount,rw /flash
+   # nano /flash/config.txt
 
-* Clone the Libreelec 8.1.2 source from https://github.com/LibreELEC/LibreELEC.tv
-* Clone https://github.com/frafall/plugin.service.snapcast and move the directories into LibreELEC.tv
-* Build by 'scripts/create_addon snapcast'
+2. Append the following line at the bottom:
 
-**TODO (not nessesary in order)**
+   dtparam=audio=on
 
-  1. To be able to compile snapclient/snapserver for Libreelec
-  2. Wrap snapclient in a Kodi service addon 
-  3. Alsa configuration from Kodi
-  4. Audio integration with Kodi (somehow?), using Digi+ for now
-  5. Snapserver service?
-  6. Any snapserver audio integration for Kodi audio output?
+3. Save the file and
 
-These may change (and probably will) 
+   # mount -o remount,ro /flash
 
-**Notes**
+4. Reboot, you should now see your interfaces when doing a 'aplay -L'
+   or '.kodi/addons/service.snapcast/bin/snapclient -l'
 
-* The externals (git submodules) are hardcoded, can we get tag 
-  and use the Libreelec download mechanisms? 
+In Libreelec 8.2 (perhaps before) you will get a mix of the snapcast
+and kodi output.
+
+Additional alsa interfaces
+--------------------------
+I run two snapclient instances, one for my HDMI and one for my Digi+ S/PDIF.
+To enable additional instances you will manually add it, check out the sample
+snapclient.service.sample file in .kodi/addons/service.snapcast/system.d
+
+You can do something like:
+# cd .kodi/addons/service.snapcast/system.d
+# cp snapclient.service.sample snapclient.service
+# systemd enable `pwd`/snapclient.service
+# systemctl start snapclient.service
+
+and do any configuration you want in the default/snapclient file.
+
+Snapserver
+----------
+The snapserver is included, to run it check out the snapserver.service.sample
+file in .kodi/addons/service.snapcast/system.d
+
+You can do something like:
+# cd .kodi/addons/service.snapcast/system.d
+# cp snapserver.service.sample snapserver.service
+# systemd enable `pwd`/snapserver.service
+# systemctl start snapserver.service
+
+and do any configuration you want in the default/snapserver file.
 
 Thanks to Anton Voyl (awiouy) for the wrapping of Librespot
-whucg I've used to learn about service addons.
+which I've used to learn about service addons.

@@ -1,0 +1,7 @@
+#!/bin/sh
+ADDON_ID=service.snapcast
+
+# Setup the default settings and config
+. /etc/profile
+oe_setup_addon ${ADDON_ID}
+

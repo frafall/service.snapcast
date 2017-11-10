@@ -1,0 +1,5 @@
+<settings>
+   <setting id="SNAPCAST_RUNCLIENT" value="true"/>
+   <setting id="SNAPCAST_RUNSERVER" value="false"/>
+</settings>
+
