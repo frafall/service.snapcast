@@ -18,8 +18,8 @@ interface visible in alsa.
 
 1. To do this you need to edit config.txt:
 
-   # mount -o remount,rw /flash
-   # nano /flash/config.txt
+   - mount -o remount,rw /flash
+   - nano /flash/config.txt
 
 2. Append the following line at the bottom:
 
@@ -27,7 +27,7 @@ interface visible in alsa.
 
 3. Save the file and
 
-   # mount -o remount,ro /flash
+   - mount -o remount,ro /flash
 
 4. Reboot, you should now see your interfaces when doing a 'aplay -L'
    or '.kodi/addons/service.snapcast/bin/snapclient -l'
@@ -42,10 +42,10 @@ To enable additional instances you will manually add it, check out the sample
 snapclient.service.sample file in .kodi/addons/service.snapcast/system.d
 
 You can do something like:
-# cd .kodi/addons/service.snapcast/system.d
-# cp snapclient.service.sample snapclient.service
-# systemd enable `pwd`/snapclient.service
-# systemctl start snapclient.service
+- cd .kodi/addons/service.snapcast/system.d
+- cp snapclient.service.sample snapclient.service
+- systemd enable `pwd`/snapclient.service
+- systemctl start snapclient.service
 
 and do any configuration you want in the default/snapclient file.
 
@@ -55,10 +55,10 @@ The snapserver is included, to run it check out the snapserver.service.sample
 file in .kodi/addons/service.snapcast/system.d
 
 You can do something like:
-# cd .kodi/addons/service.snapcast/system.d
-# cp snapserver.service.sample snapserver.service
-# systemd enable `pwd`/snapserver.service
-# systemctl start snapserver.service
+- cd .kodi/addons/service.snapcast/system.d
+- cp snapserver.service.sample snapserver.service
+- systemd enable `pwd`/snapserver.service
+- systemctl start snapserver.service
 
 and do any configuration you want in the default/snapserver file.
 
