@@ -1,4 +1,4 @@
-# plugin.service.snapcast
+# service.snapcast
 Run Snapcast (client) as a Kodi addon/service. 
 
 Snapcast 
@@ -61,6 +61,11 @@ You can do something like:
 - systemctl start snapserver.service
 
 and do any configuration you want in the default/snapserver file.
+
+Compiling
+---------
+This is compiled as a addon package in Libreelec 8.2, is overlay the addon onto
+the Libreelec.tv directory and run a ./scripts/create_addon snapcast
 
 Thanks to Anton Voyl (awiouy) for the wrapping of Librespot
 which I've used to learn about service addons.

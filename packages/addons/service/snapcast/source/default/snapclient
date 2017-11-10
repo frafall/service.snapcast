@@ -21,4 +21,4 @@ USER_OPTS=""
 SNAPCLIENT_OPTS=""
 
 # Additional snapclient instance for my Digi+ alsa interface
-SNAPCLIENT_OPTS2="-n 5"
+SNAPCLIENT_OPTS2="-s out_spdif"
