@@ -4,6 +4,10 @@ configured (for now) in .kodi/addons/service/snapcast/defaults.
 Note, snapserver included but no configuration/control done for now.
 Check out .kodi/addon/service.snapcast/defaults/snapserver
 
+v0.0.4
+- Cleaned up directory structure
+- Moved all submodules into addon instead of external deps
+
 v0.0.2
 - Basic build of snapclient addon
   Snapserver included but no effort put into integration

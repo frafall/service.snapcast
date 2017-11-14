@@ -28,14 +28,15 @@
 end_long_comment
 
 PKG_NAME="snapcast"
-PKG_REV="3"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_VERSION="0.12.0"
 PKG_SITE="https://github.com/badaix/snapcast"
 PKG_URL="$PKG_SITE/archive/v$PKG_VERSION.tar.gz"
 PKG_SOURCE_DIR="$PKG_NAME-$PKG_VERSION-Source"
-PKG_DEPENDS_TARGET="toolchain tremor flac libvorbis libogg"
+#PKG_DEPENDS_TARGET="toolchain flac libvorbis libogg"
+PKG_DEPENDS_TARGET="toolchain flac libvorbis libogg"
 PKG_SECTION="service"
 PKG_SHORTDESC="Snapcast - Synchronous audio player."
 PKG_LONGDESC="Snapcast is a multi-room client-server audio player, where all clients are time synchronized with the server to play perfectly synced audio. It's not a standalone player, but an extension that turns your existing audio player into a Sonos-like multi-room solution."
@@ -69,11 +70,20 @@ post_unpack() {
     printf "%${BUILD_INDENT}c ${boldgreen}Checking out asio${endcolor} ${boldwhite}(@28d9b8d$)${endcolor}\n" ' '>&$SILENT_OUT
     (git clone https://github.com/chriskohlhoff/asio.git -q; cd asio; git checkout 28d9b8d -q)
 
-    printf "%${BUILD_INDENT}c ${boldgreen}Checking out popl${endcolor} ${boldwhite}(@df5a009$)${endcolor}\n" ' '>&$SILENT_OUT
-    (git clone https://github.com/badaix/popl.git -q; cd popl; git checkout df5a009 -q)
+    printf "%${BUILD_INDENT}c ${boldgreen}Checking out flac${endcolor} ${boldwhite}(@28d9b8d$)${endcolor}\n" ' '>&$SILENT_OUT
+    (git clone git://xiph.org/flac.git -q; cd flac; git checkout 0e11f73 -q)
 
     printf "%${BUILD_INDENT}c ${boldgreen}Checking out jsonrpcpp${endcolor} ${boldwhite}(@115296b$)${endcolor}\n" ' '>&$SILENT_OUT
     (git clone https://github.com/badaix/jsonrpcpp.git -q; cd jsonrpcpp; git checkout 115296b -q)
+
+    printf "%${BUILD_INDENT}c ${boldgreen}Checking out ogg${endcolor} ${boldwhite}(@df5a009$)${endcolor}\n" ' '>&$SILENT_OUT
+    (git clone git://git.xiph.org/ogg.git -q; cd ogg; git checkout 18c401c -q)
+
+    printf "%${BUILD_INDENT}c ${boldgreen}Checking out popl${endcolor} ${boldwhite}(@df5a009$)${endcolor}\n" ' '>&$SILENT_OUT
+    (git clone https://github.com/badaix/popl.git -q; cd popl; git checkout df5a009 -q)
+
+    printf "%${BUILD_INDENT}c ${boldgreen}Checking out tremor${endcolor} ${boldwhite}(@115296b$)${endcolor}\n" ' '>&$SILENT_OUT
+    (git clone https://git.xiph.org/tremor.git -q; cd tremor; git checkout b56ffce -q)
   )
 }
 
