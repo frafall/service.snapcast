@@ -23,7 +23,7 @@ $  nano /flash/config.txt
 ```
 Append the following line at the bottom:
 ```sh
-$ dtparam=audio=on
+dtparam=audio=on
 ```
 Save the file and remount:
 ```sh
