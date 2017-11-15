@@ -1,7 +1,7 @@
 # service.snapcast
-Run Snapcast (client) as a Kodi addon/service. 
+Run Snapcast (client) as a Kodi addon/service.
 
-Snapcast 
+Snapcast
 ========
 Snapcast (https://github.com/badaix/snapcast) is a multi-room audio player.
 This addon implementation installes the snapclient, ie the 'speaker' part,
@@ -17,23 +17,20 @@ interface. For this to work you will probably need to make the hdmi
 interface visible in alsa.
 
 1. To do this you need to edit config.txt:
-
-   - mount -o remount,rw /flash
-   - nano /flash/config.txt
+>  mount -o remount,rw /flash
+>  nano /flash/config.txt
 
 2. Append the following line at the bottom:
-
-   dtparam=audio=on
+> dtparam=audio=on
 
 3. Save the file and
-
-   - mount -o remount,ro /flash
+> mount -o remount,ro /flash
 
 4. Reboot, you should now see your interfaces when doing a 'aplay -L'
    or '.kodi/addons/service.snapcast/bin/snapclient -l'
 
 In Libreelec 8.2 (perhaps before) you will get a mix of the snapcast
-and kodi output.
+and kodi output, ie non-locking access to alsa device.
 
 Additional alsa interfaces
 --------------------------
@@ -42,12 +39,13 @@ To enable additional instances you will manually add it, check out the sample
 snapclient.service.sample file in .kodi/addons/service.snapcast/system.d
 
 You can do something like:
-- cd .kodi/addons/service.snapcast/system.d
-- cp snapclient.service.sample snapclient.service
-- systemd enable `pwd`/snapclient.service
-- systemctl start snapclient.service
+> cd .kodi/addons/service.snapcast/system.d
+> cp snapclient.service.sample snapclient.service
+> systemd enable `pwd`/snapclient.service
+> systemctl start snapclient.service
 
-and do any configuration you want in the default/snapclient file.
+and do any configuration you want in the default/snapclient file. Note that 
+updating the addon will remove everything in the service.snapcast directory, ie take a backup.
 
 Snapserver
 ----------
@@ -55,18 +53,38 @@ The snapserver is included, to run it check out the snapserver.service.sample
 file in .kodi/addons/service.snapcast/system.d
 
 You can do something like:
-- cd .kodi/addons/service.snapcast/system.d
-- cp snapserver.service.sample snapserver.service
-- systemd enable `pwd`/snapserver.service
-- systemctl start snapserver.service
+> cd .kodi/addons/service.snapcast/system.d
+> cp snapserver.service.sample snapserver.service
+> systemd enable `pwd`/snapserver.service
+> systemctl start snapserver.service
 
 and do any configuration you want in the default/snapserver file.
 
 Compiling
 ---------
-This is compiled as a addon package in Libreelec 8.2, just unpack the addon onto
-the Libreelec.tv directory and run a ./scripts/create_addon snapcast
+To compile this addon you need to:
 
+1. Clone Libreelec
+> git clone https://github.com/LibreELEC/LibreELEC.tv.git
+
+2. Create submodule service.snapcast:
+>  cd LibreELEC.tv/packages/addons/service
+>  git submodule add https://github.com/frafall/service.snapcast.git snapcast
+  
+3. Build it:
+> cd Libreelec.tv
+> scripts/create_addon snapcast
+
+Todo
+----
+
+ - Configuration in Kodi
+ - Move defaults to persistent storage (through addon upgrades)
+ - Look into 'native' Kodi audio integration. Kodi AirTunes uses a pipe and a play 
+   command with pipe path url, can probably do the same.
+ - Wish for metadata support in Snapcast to be able to display in Kodi.
+
+**Thanks**
 
 Thanks to Anton Voyl (awiouy) for the wrapping of Librespot
 which I've used to learn about service addons.
