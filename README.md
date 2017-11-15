@@ -16,21 +16,22 @@ The addon only instanciates snapclient running on the default alsa
 interface. For this to work you will probably need to make the hdmi
 interface visible in alsa.
 
-1. To do this you need to edit config.txt:
->  mount -o remount,rw /flash
->  nano /flash/config.txt
+To do this you need to edit config.txt:
+```sh
+$  mount -o remount,rw /flash
+$  nano /flash/config.txt
+```
+Append the following line at the bottom:
+```sh
+$ dtparam=audio=on
+```
+Save the file and remount:
+```sh
+$ mount -o remount,ro /flash
+```
+Reboot, you should now see your interfaces when doing a 'aplay -L' or '.kodi/addons/service.snapcast/bin/snapclient -l'
 
-2. Append the following line at the bottom:
-> dtparam=audio=on
-
-3. Save the file and
-> mount -o remount,ro /flash
-
-4. Reboot, you should now see your interfaces when doing a 'aplay -L'
-   or '.kodi/addons/service.snapcast/bin/snapclient -l'
-
-In Libreelec 8.2 (perhaps before) you will get a mix of the snapcast
-and kodi output, ie non-locking access to alsa device.
+In Libreelec 8.2 (perhaps before) you will get a mix of the snapcast and kodi output, ie non-locking access to alsa device.
 
 Additional alsa interfaces
 --------------------------
@@ -39,11 +40,12 @@ To enable additional instances you will manually add it, check out the sample
 snapclient.service.sample file in .kodi/addons/service.snapcast/system.d
 
 You can do something like:
-> cd .kodi/addons/service.snapcast/system.d
-> cp snapclient.service.sample snapclient.service
-> systemd enable `pwd`/snapclient.service
-> systemctl start snapclient.service
-
+```sh
+$ cd .kodi/addons/service.snapcast/system.d
+$ cp snapclient.service.sample snapclient.service
+$ systemd enable `pwd`/snapclient.service
+$ systemctl start snapclient.service
+```
 and do any configuration you want in the default/snapclient file. Note that 
 updating the addon will remove everything in the service.snapcast directory, ie take a backup.
 
@@ -53,27 +55,33 @@ The snapserver is included, to run it check out the snapserver.service.sample
 file in .kodi/addons/service.snapcast/system.d
 
 You can do something like:
-> cd .kodi/addons/service.snapcast/system.d
-> cp snapserver.service.sample snapserver.service
-> systemd enable `pwd`/snapserver.service
-> systemctl start snapserver.service
-
+```sh
+$ cd .kodi/addons/service.snapcast/system.d
+$ cp snapserver.service.sample snapserver.service
+$ systemd enable `pwd`/snapserver.service
+$ systemctl start snapserver.service
+```
 and do any configuration you want in the default/snapserver file.
 
 Compiling
 ---------
 To compile this addon you need to:
 
-1. Clone Libreelec
-> git clone https://github.com/LibreELEC/LibreELEC.tv.git
+Clone Libreelec:
+```sh
+$ git clone https://github.com/LibreELEC/LibreELEC.tv.git
+```
 
-2. Create submodule service.snapcast:
->  cd LibreELEC.tv/packages/addons/service
->  git submodule add https://github.com/frafall/service.snapcast.git snapcast
-  
-3. Build it:
-> cd Libreelec.tv
-> scripts/create_addon snapcast
+Create submodule service.snapcast:
+```sh
+$ cd LibreELEC.tv/packages/addons/service
+$ git submodule add https://github.com/frafall/service.snapcast.git snapcast
+```
+Build it:
+```sh
+$ cd Libreelec.tv
+$ scripts/create_addon snapcast
+```
 
 Todo
 ----
@@ -88,4 +96,3 @@ Todo
 
 Thanks to Anton Voyl (awiouy) for the wrapping of Librespot
 which I've used to learn about service addons.
-
