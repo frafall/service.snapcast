@@ -18,7 +18,7 @@ START_SNAPCLIENT=true
 USER_OPTS=""
 
 # Main snapclient instance runs with the default alsa interface
-SNAPCLIENT_OPTS=""
+SNAPCLIENT_OPTS="-s default"
 
 # Additional snapclient instance for my Digi+ alsa interface
-SNAPCLIENT_OPTS2="-s out_spdif"
+SNAPCLIENT_OPTS2=""
