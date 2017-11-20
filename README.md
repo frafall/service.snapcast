@@ -10,6 +10,13 @@ as a Kodi service addon.
 The addon will keep the snapclient running while Kodi is up but, as someone
 uses Kodi to play anything the snapclient will be disabled.
 
+Installing the addon
+--------------------
+Most users will install the addon from a prebuilt release:
+1.Download a relase [here](https://github.com/frafall/service.snapcast/releases)
+2.Copy it into the RPi filesystem
+3.Use Kodi to install from a .zip file
+
 Audio setup
 -----------
 The addon only instanciates snapclient running on the default alsa
