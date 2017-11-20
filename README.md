@@ -14,9 +14,9 @@ Installing the addon
 --------------------
 Most users will install the addon from a [prebuilt release](http://kodi.wiki/view/HOW-TO:Install_add-ons_from_zip_files):
 
-1.Download a relase [here](https://github.com/frafall/service.snapcast/releases)
-2.Copy it into the RPi filesystem
-3.Use Kodi to install from a .zip file
+* Download a relase [here](https://github.com/frafall/service.snapcast/releases)
+* Copy it into the RPi filesystem
+* Use Kodi to install from a .zip file
 
 Audio setup
 -----------
