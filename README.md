@@ -14,7 +14,7 @@ Installing the addon
 --------------------
 Most users will install the addon from a [prebuilt release](http://kodi.wiki/view/HOW-TO:Install_add-ons_from_zip_files):
 
-* Download a relase [here](https://github.com/frafall/service.snapcast/releases)
+* Download a relase [here](https://github.com/frafall/service.snapcast/releases), note: one of the service.snapcast-<version>.zip files, not the source.
 * Copy it into the RPi filesystem
 * Use Kodi to install from a .zip file
 
