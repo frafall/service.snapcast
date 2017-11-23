@@ -1,5 +1,5 @@
 # service.snapcast
-Run Snapcast (client) as a Kodi addon/service.
+Run Snapcast (client) as a Kodi addon/service on Libreelec 8.
 
 Snapcast
 ========
