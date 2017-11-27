@@ -24,7 +24,7 @@ The addon only instanciates snapclient running on the default alsa
 interface. For this to work you will probably need to make the hdmi
 interface visible in alsa.
 
-To do this you need to edit config.txt:
+To do this you need to edit config.txt (Libreelec/Openelec specific):
 ```sh
 $  mount -o remount,rw /flash
 $  nano /flash/config.txt
@@ -47,11 +47,11 @@ I run two snapclient instances, one for my HDMI and one for my Digi+ S/PDIF.
 To enable additional instances you will manually add it, check out the sample
 snapclient.service.sample file in .kodi/addons/service.snapcast/system.d
 
-You can do something like:
+You can do something like (Libreelec/Openelec specific):
 ```sh
 $ cd .kodi/addons/service.snapcast/system.d
 $ cp snapclient.service.sample snapclient.service
-$ systemd enable `pwd`/snapclient.service
+$ systemctl enable `pwd`/snapclient.service
 $ systemctl start snapclient.service
 ```
 and do any configuration you want in the default/snapclient file. Note that 
@@ -66,7 +66,7 @@ You can do something like:
 ```sh
 $ cd .kodi/addons/service.snapcast/system.d
 $ cp snapserver.service.sample snapserver.service
-$ systemd enable `pwd`/snapserver.service
+$ systemctl enable `pwd`/snapserver.service
 $ systemctl start snapserver.service
 ```
 and do any configuration you want in the default/snapserver file.
