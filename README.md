@@ -71,3 +71,17 @@ the Libreelec.tv directory and run a ./scripts/create_addon snapcast
 Thanks to Anton Voyl (awiouy) for the wrapping of Librespot
 which I've used to learn about service addons.
 
+Planning next version:
+----------------------
+* Play through Kodi audio
+* Kodi has to start listening to Snapclient manually (or through JSON-RPC)
+  or, use the status to determine when to start? Option for this?
+* Metadata support (no album art for now)
+
+How:
+- need to know snapclient's stream status for idle/playing
+- parse snapclients stderr for json metadata
+- play snapclient to pipe, send url to Kodi to play
+
+Is this possible?
+
