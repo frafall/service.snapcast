@@ -10,7 +10,7 @@
 + 
 + STRIP     = echo
 + CXXFLAGS += -pthread -DNO_CPP11_STRING -DHAS_TREMOR -DHAS_ALSA -DHAS_AVAHI -DHAS_DAEMON
-+ LDFLAGS  += -lasound -lvorbisidec -lavahi-client -lavahi-common -logg
++ LDFLAGS  += -lasound -lvorbis -lavahi-client -lavahi-common -logg
 + OBJ      += ../common/daemon.o publishZeroConf/publishAvahi.o
 + 
   else ifeq ($(TARGET), FREEBSD)
