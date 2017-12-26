@@ -20,7 +20,8 @@
 ===============================================================================
 
 - externals are git submodules, not visible in tar.gz so need to hardcode
-- some are explicitly linked into (bad carma) asio, popl, aixlog so need to be unpacked in externals
+- some are explicitly linked into (bad carma) asio, popl, aixlog so need to 
+  be unpacked in externals
 - assumes these are present as libs (HAS_TREMOR, HAS_OGG)
 - build for Libreelec needs these statically linked (I guess?) or installed together
 
@@ -36,7 +37,7 @@ PKG_SITE="https://github.com/badaix/snapcast"
 PKG_URL="$PKG_SITE/archive/v$PKG_VERSION.tar.gz"
 PKG_SOURCE_DIR="$PKG_NAME-$PKG_VERSION-Source"
 #PKG_DEPENDS_TARGET="toolchain flac libvorbis libogg"
-PKG_DEPENDS_TARGET="toolchain flac libvorbis libogg"
+PKG_DEPENDS_TARGET="toolchain flac libvorbis libogg alsa-lib avahi"
 PKG_SECTION="service"
 PKG_SHORTDESC="Snapcast - Synchronous audio player."
 PKG_LONGDESC="Snapcast is a multi-room client-server audio player, where all clients are time synchronized with the server to play perfectly synced audio. It's not a standalone player, but an extension that turns your existing audio player into a Sonos-like multi-room solution."
